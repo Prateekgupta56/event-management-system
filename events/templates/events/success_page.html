@@ -1,0 +1,16 @@
+{% extends "events/base.html" %}
+
+{% block title %}Registration Successful{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-5 rounded-4 text-center" style="max-width: 500px;">
+        <h2 class="mb-3 text-success">🎉 Registration Successful!</h2>
+        <p class="fs-5">Thank you <strong>{{ full_name }}</strong> for registering for the event.</p>
+        <p class="text-muted">We’ve saved your details and will contact you at <strong>{{ email }}</strong> if needed.</p>
+        
+        <a href="{% url 'student_event_register' event.id  %}" class="btn btn-primary mt-4 rounded-3">Register Another Student</a>
+        <a href="/" class="btn btn-outline-secondary mt-4 rounded-3">Go to Home</a>
+    </div>
+</div>
+{% endblock %}

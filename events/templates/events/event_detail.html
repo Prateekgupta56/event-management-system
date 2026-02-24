@@ -1,0 +1,61 @@
+{% extends "events/base.html" %}
+
+{% block title %}{{ event.event_name }} | Event Details{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+    <div class="row">
+        <!-- Event Title and Description -->
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body p-4">
+
+                    <!-- Title -->
+                    <h2 class="card-title text-center mb-3">{{ event.event_name }}</h2>
+
+                    <!-- Description -->
+                    <p class="card-text lead text-muted text-center">
+                        {{ event.event_desc }}
+                    </p>
+
+                    <hr>
+
+                    <!-- Event Details -->
+                    <div class="mt-4">
+                        {% if event.event_start_date %}
+                            <p><i class="bi bi-calendar-event me-2 text-primary"></i>
+                                <strong>Start:</strong> {{ event.event_start_date|date:"d M Y, H:i" }}
+                            </p>
+                        {% endif %}
+
+                        {% if event.event_location %}
+                            <p><i class="bi bi-geo-alt me-2 text-danger"></i>
+                                <strong>Location:</strong> {{ event.event_location }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+    <a href="{% url 'events' %}" class="btn btn-outline-secondary">
+        Back to Events
+    </a>
+    <a href="{% url 'student_event_register' event.id %}" class="btn btn-primary">
+        Register For Event Directly
+    </a>
+
+    {% if user.is_authenticated and user.profile.profile_role == "Teacher" %}
+        <a href="{% url 'edit_event' event.id %}" class="btn btn-warning">Edit Event</a>
+        <a href="{% url 'delete_event' event.id %}" class="btn btn-danger">Delete Event</a>
+    {% else %}
+        <a href="{% url 'login_profile' %}" class="btn btn-success">Login to Profile</a>
+    {% endif %}
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

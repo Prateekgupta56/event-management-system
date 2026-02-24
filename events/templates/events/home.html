@@ -1,0 +1,104 @@
+{% extends "events/base.html" %}
+{% load static %}
+
+{% block content %}                                                                                                                             <!-- Hero Section -->
+{% if messages %}
+  <div class="container mt-3">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<section class="bg-primary text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Welcome to Event Management System</h1>
+    <p class="lead">Plan, Manage, and Attend Events with Ease</p>
+    <a href="{% url 'events' %}" class="btn btn-light btn-lg mt-3">View Events</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold text-primary mb-4">Why Choose Us?</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow border-0">
+          <div class="card-body">
+            <i class="bi bi-calendar-event fs-1 text-primary"></i>
+            <h5 class="card-title mt-3">Easy Event Scheduling</h5>
+            <p class="card-text">Create and manage events effortlessly with our simple tools.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow border-0">
+          <div class="card-body">
+            <i class="bi bi-people fs-1 text-primary"></i>
+            <h5 class="card-title mt-3">Connect with People</h5>
+            <p class="card-text">Engage participants and build stronger event communities.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow border-0">
+          <div class="card-body">
+            <i class="bi bi-graph-up-arrow fs-1 text-primary"></i>
+            <h5 class="card-title mt-3">Dashboard Insights</h5>
+            <p class="card-text">Get real-time statistics and track event performance.</p>                                                                </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Events -->
+<section class="bg-light py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold text-primary mb-4">Upcoming Events</h2>                                                                                      <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow border-0">
+          <img src="{% static 'images/event1.jpeg' %}" class="card-img-top" alt="Event 1">
+          <div class="card-body">
+            <h5 class="card-title">Tech Conference 2025</h5>
+            <p class="card-text">Join industry leaders for discussions on the latest innovations.</p>
+            <a href="{% url 'events' %}" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow border-0">
+          <img src="{% static 'images/event2.jpeg' %}" class="card-img-top" alt="Event 2">
+          <div class="card-body">
+            <h5 class="card-title">Music Fest</h5>
+            <p class="card-text">Enjoy live music performances with friends and family.</p>
+            <a href="{% url 'events' %}" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow border-0">
+          <img src="{% static 'images/event3.jpeg' %}" class="card-img-top" alt="Event 3">
+          <div class="card-body">                                                                                                                           <h5 class="card-title">Startup Meetup</h5>
+            <p class="card-text">Network with entrepreneurs and discover new opportunities.</p>
+            <a href="{% url 'events' %}" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 text-center bg-primary text-white">
+  <div class="container">
+    <h2 class="fw-bold">Ready to Host or Join an Event?</h2>
+    <p class="lead">Sign in to your dashboard and start exploring today.</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-light btn-lg">Go to Dashboard</a>
+  </div>
+</section>
+{% endblock %}
