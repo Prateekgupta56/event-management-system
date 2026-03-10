@@ -15,7 +15,6 @@ isodate==0.7.2
 itsdangerous==2.2.0
 Jinja2==3.1.6
 MarkupSafe==3.0.3
-numpy @ file:///home/builder/.termux-build/python-numpy/src/dist/numpy-2.2.5-cp312-cp312-linux_aarch64.whl#sha256=34bd49517455c5c6bbdee6ad2c787a3eb06b2610e1ff3a42ffb49cee285be376
 packaging==26.0
 pillow @ file:///home/builder/.termux-build/python-pillow/src
 requests==2.32.5
