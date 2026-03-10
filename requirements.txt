@@ -1,3 +1,28 @@
-asgiref==3.9.1
-Django==5.2.6
-sqlparse==0.5.3
+asgiref==3.11.1
+azure-ai-translation-text==1.0.1
+azure-ai-vision-imageanalysis==1.0.0
+azure-core==1.37.0
+blinker==1.9.0
+certifi==2026.1.4
+charset-normalizer==3.4.4
+click==8.3.1
+Cython==3.2.3
+Django==6.0.2
+Flask==3.1.2
+gunicorn==25.1.0
+idna==3.11
+isodate==0.7.2
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+numpy @ file:///home/builder/.termux-build/python-numpy/src/dist/numpy-2.2.5-cp312-cp312-linux_aarch64.whl#sha256=34bd49517455c5c6bbdee6ad2c787a3eb06b2610e1ff3a42ffb49cee285be376
+packaging==26.0
+pillow @ file:///home/builder/.termux-build/python-pillow/src
+requests==2.32.5
+sqlparse==0.5.5
+tflite-runtime @ file:///home/builder/.termux-build/python-tflite-runtime/build/build-wheel/dist/tflite_runtime-2.20.0-cp312-cp312-linux_aarch64.whl#sha256=15eb4b0ff620a7fb8b730f1da1ab3e50b1e8290f19ec9e0ce1c31184dd4adf11
+typing_extensions==4.15.0
+tzdata==2025.3
+urllib3==2.6.2
+Werkzeug==3.1.4
+whitenoise==6.12.0
