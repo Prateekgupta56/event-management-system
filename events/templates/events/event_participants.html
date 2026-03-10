@@ -1,0 +1,38 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h2 class="text-primary mb-3">Participants for {{ event.event_name }}</h2>
+
+    {% if participants %}
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Course</th>
+                        <th>Year</th>
+                        <th>Registered On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in participants %}
+                    <tr>
+                        <td>{{ p.full_name }}</td>
+                        <td>{{ p.email }}</td>
+                        <td>{{ p.mobile }}</td>
+                        <td>{{ p.course }}</td>
+                        <td>{{ p.year }}</td>
+                        <td>{{ p.date_added|date:"M d, Y H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-muted mt-3">No participants have registered yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

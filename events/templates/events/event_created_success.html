@@ -1,0 +1,17 @@
+{% extends "events/base.html" %}
+
+{% block title %}Event Created Successfully{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-5 rounded-4 text-center" style="max-width: 500px;">
+        <h2 class="mb-3 text-success">🎉 Success!</h2>
+        <p class="fs-5">Thank you <strong>{{ profile_name }}</strong> for creating an event.</p>
+        <p class="text-muted">We’ve saved your Event details and students will register it.</p>
+
+        <a href="{% url 'events'  %}" class="btn btn-primary mt-4 rounded-3">All Events</a>
+        <a href="/" class="btn btn-outline-secondary mt-4 rounded-3">Go to Home</a>
+    </div>
+</div>
+{% endblock %}
+

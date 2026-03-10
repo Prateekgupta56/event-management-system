@@ -1,0 +1,67 @@
+{% extends "events/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4 text-primary">Welcome, {{ profile.profile_name }}!</h2>
+
+    <!-- If Teacher -->
+    {% if profile.profile_role == "Teacher" %}
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-primary">Your Events</h4>
+            <a href="{% url 'create_event' %}" class="btn btn-primary">+ Create New Event</a>
+        </div>
+
+        {% if events %}
+            <div class="row">
+                {% for event in events %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card shadow border-0 h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">{{ event.event_name }}</h5>
+                                <p class="card-text">{{ event.event_desc|truncatewords:20 }}</p>
+                                <p><strong>Location:</strong> {{ event.event_location }}</p>
+                                <p><strong>Start:</strong> {{ event.event_start_date|date:"M d, Y H:i" }}</p>
+                                <p><strong>End:</strong> {{ event.event_end_date|date:"M d, Y H:i" }}</p>
+                            </div>
+                            <div class="card-footer bg-light d-flex justify-content-between">
+                                <a href="{% url 'edit_event' event.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{% url 'delete_event' event.id %}" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="{% url 'event_participants' event.id %}" class="btn btn-info btn-sm">View Participants</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted">You haven’t created any events yet.</p>
+        {% endif %}
+
+    <!-- If Student -->
+    {% elif profile.profile_role == "Student" %}
+        <h4 class="text-primary mb-3">Events You Participated In</h4>
+        {% if registrations %}
+            <div class="row">
+                {% for reg in registrations %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card shadow border-0 h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">{{ reg.event.event_name }}</h5>
+                                <p class="card-text">{{ reg.event.event_desc|truncatewords:20 }}</p>
+                                <p><strong>Location:</strong> {{ reg.event.event_location }}</p>
+                                <p><strong>Start:</strong> {{ reg.event.event_start_date|date:"M d, Y H:i" }}</p>
+                                <p><strong>End:</strong> {{ reg.event.event_end_date|date:"M d, Y H:i" }}</p>
+                            </div>
+                            <div class="card-footer bg-light text-center">
+                                <a href="{% url 'event_detail' reg.event.id %}" class="btn btn-sm btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted">You haven’t registered for any events yet.</p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

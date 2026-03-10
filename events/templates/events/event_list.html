@@ -1,0 +1,54 @@
+{% extends "events/base.html" %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+    <h2 class="mb-4 text-center">✨ All Events ✨</h2>
+
+    {% if events %}
+        <!-- Responsive Grid -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 g-4">
+
+            {% for event in events %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-primary fw-bold">{{ event.event_name }}</h5>
+                            <p class="card-text text-muted">
+                                {{ event.event_desc|truncatewords:20 }}
+                            </p>
+
+                            {% if event.event_start_date %}
+                                <p class="small mb-1"><strong>📅 Start:</strong> {{ event.event_start_date|date:"d M Y H:i" }}</p>
+                            {% endif %}
+
+                            {% if event.event_location %}
+                                <p class="small"><strong>📍 Location:</strong> {{ event.event_location }}</p>
+                            {% endif %}
+
+                            <!-- Buttons stacked properly on small devices -->
+                            <div class="mt-auto d-flex flex-wrap gap-2">
+                                <a href="{% url 'event_detail' event.id %}" class="btn btn-sm btn-primary">Learn More</a>
+
+                                {% if request.session.profile_id and request.session.profile_role == "Teacher" %}
+                                    <a href="{% url 'edit_event' event.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{% url 'delete_event' event.id %}" class="btn btn-sm btn-danger">Delete</a>
+                                {% else %}
+                                    <a href="{% url 'login_profile' %}" class="btn btn-sm btn-success">Login</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center">
+            🚫 No events available at the moment.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

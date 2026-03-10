@@ -1,0 +1,22 @@
+{% extends "events/base.html" %}
+
+{% block title %}Delete Event{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4 rounded-4 w-100" style="max-width: 500px;">
+        <h2 class="text-center text-danger mb-4">Delete Event</h2>
+        <p class="text-center">
+            Are you sure you want to delete the event:
+            <strong>{{ event.event_name }}</strong>?
+        </p>
+        <p class="text-muted text-center">This action cannot be undone.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100 py-2 rounded-3">Yes, Delete</button>
+            <a href="{% url 'event_detail' event.id %}" class="btn btn-secondary w-100 mt-2 py-2 rounded-3">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

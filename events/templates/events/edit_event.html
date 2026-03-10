@@ -1,0 +1,53 @@
+{% extends "events/base.html" %}
+
+{% block title %}Edit Event{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4 rounded-4 w-100" style="max-width: 500px;">
+        <h2 class="text-center mb-4">Edit Event</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <!-- Event Name -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Event Name</label>
+                <input type="text" name="event_name" class="form-control" 
+                       value="{{ event.event_name }}" required>
+            </div>
+
+            <!-- Event Description -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Description</label>
+                <textarea name="event_desc" class="form-control" rows="3" required>{{ event.event_desc }}</textarea>
+            </div>
+
+            <!-- Event Start Date -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Start Date & Time</label>
+                <input type="datetime-local" name="event_start_date" class="form-control"
+                       value="{{ event.event_start_date|date:'Y-m-d\\TH:i' }}" required>
+            </div>
+
+            <!-- Event End Date -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">End Date & Time</label>
+                <input type="datetime-local" name="event_end_date" class="form-control"
+                       value="{{ event.event_end_date|date:'Y-m-d\\TH:i' }}" required>
+            </div>
+
+            <!-- Event Location -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Location</label>
+                <textarea name="event_location" class="form-control" rows="2" required>{{ event.event_location }}</textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100 py-2 rounded-3">Update Event</button>
+
+            <!-- Cancel Button -->
+            <a href="{% url 'event_detail' event.id %}" class="btn btn-secondary w-100 mt-2 py-2 rounded-3">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
