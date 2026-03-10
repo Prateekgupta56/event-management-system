@@ -17,7 +17,6 @@ Jinja2==3.1.6
 MarkupSafe==3.0.3
 requests==2.32.5
 sqlparse==0.5.5
-tflite-runtime @ file:///home/builder/.termux-build/python-tflite-runtime/build/build-wheel/dist/tflite_runtime-2.20.0-cp312-cp312-linux_aarch64.whl#sha256=15eb4b0ff620a7fb8b730f1da1ab3e50b1e8290f19ec9e0ce1c31184dd4adf11
 typing_extensions==4.15.0
 tzdata==2025.3
 urllib3==2.6.2
